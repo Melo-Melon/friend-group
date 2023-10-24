@@ -1,7 +1,7 @@
 """An example of how to represent a group of acquaintances in Python."""
 
 # Your code to go here...
-
+import json
 
 Jill={"name":"Jill",
       "age":26,
@@ -63,7 +63,7 @@ Dokolo = add_person("Dokolo", 24, "student", {})
 my_group.append(Dokolo)
 #print(Dokolo)
 
-print(average_age(my_group))
+#print(average_age(my_group))
 
 def max_age(group_list):
     max_age=0
@@ -72,7 +72,7 @@ def max_age(group_list):
             max_age = i["age"]
     
     return max_age
-print(max_age(my_group))
+#print(max_age(my_group))
 
 def mean_relation(group_list):
     total_relation=0
@@ -82,7 +82,7 @@ def mean_relation(group_list):
         total_person +=1
     
     return total_relation / total_person
-print(mean_relation(my_group))
+#print(mean_relation(my_group))
 
 def max_age_relation(group_list):
     max_age=0
@@ -93,7 +93,7 @@ def max_age_relation(group_list):
                 max_age = i["age"]
                 max_name = i["name"]
     return (max_age, max_name)
-print(max_age_relation(my_group))
+#print(max_age_relation(my_group))
 
 def max_age_name(group_list):
     max_age=0
@@ -105,4 +105,54 @@ def max_age_name(group_list):
                 max_age = i["age"]
                 max_name = i["name"]
     return (max_age, max_name)
-print(max_age_name(my_group))
+#print(max_age_name(my_group))
+
+
+######################################################################################################
+
+#week4 exercise1
+group = {
+    "Jill": {
+        "age": 26,
+        "job": "biologist",
+        "relations": {
+            "Zalika": "friend",
+            "John": "partner"
+        }
+    },
+    "Zalika": {
+        "age": 28,
+        "job": "artist",
+        "relations": {
+            "Jill": "friend"
+        }
+    },
+    "John": {
+        "age": 27,
+        "job": "writer",
+        "relations": {
+            "Jill": "partner"
+        }
+    },
+    "Nash": {
+        "age": 34,
+        "job": "chef",
+        "relations": {
+            "John": "cousin",
+            "Zalika": "landlord"
+        }
+    }
+}
+
+
+#write
+with open("group.json", "w") as group_file:
+    json.dump(group, group_file)
+
+#read
+read_group = {}
+with open("group.json", "r") as group_file:
+    read_group = json.load(group_file)
+
+
+
